@@ -1,0 +1,26 @@
+# EditorConfig https://editorconfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Windows-style newlines for all types of file
+[*]
+end_of_line = crlf
+
+[*.cs]
+indent_style = tab
+tab_width=4
+tab_width=4
+
+[*.{json,xml,csproj}]
+indent_style = space
+tab_width=2
+indent_size = 2
+
+# Linux shell scripts
+[*.sh]
+end_of_line = lf
+
+# yaml file
+[*.yml]
+indent_style = space
