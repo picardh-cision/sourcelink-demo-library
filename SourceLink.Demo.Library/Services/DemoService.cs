@@ -14,7 +14,7 @@ namespace SourceLink.Demo.Library.Services
 
 		public DemoModel GetDemoContent()
 		{
-			const string CONTEXT = "DemoService";
+			const string CONTEXT = "DemoService1.0.1";
 
 			var result = _repository.FetchDemoDetails();
 			result.Context = CONTEXT;
