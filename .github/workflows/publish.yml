@@ -21,18 +21,18 @@ jobs:
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
 
     - name: Build
-      run: dotnet build --configuration Debug /p:Version=${VERSION}
+      run: dotnet build --configuration Debug /p:Version=${VERSION}-debug
 
     - name: Test
-      run: dotnet test --configuration Debug /p:Version=${VERSION} --no-build
+      run: dotnet test --configuration Debug /p:Version=${VERSION}-debug --no-build
 
     - name: Pack
       run: | 
-        dotnet pack --configuration Release /p:Version=${VERSION} --output .
         dotnet pack --configuration Debug /p:Version=${VERSION}-debug --no-build --output .
+        dotnet pack --configuration Release /p:Version=${VERSION} --output .
         
     - name: Push
       run: |
-        dotnet nuget push SourceLink.Demo.Library.${VERSION}.nupkg --source https://nuget.pkg.github.com/picardh-cision/index.json --api-key ${GITHUB_TOKEN}
         dotnet nuget push SourceLink.Demo.Library.${VERSION}-debug.nupkg --source https://nuget.pkg.github.com/picardh-cision/index.json --api-key ${GITHUB_TOKEN}
+        dotnet nuget push SourceLink.Demo.Library.${VERSION}.nupkg --source https://nuget.pkg.github.com/picardh-cision/index.json --api-key ${GITHUB_TOKEN}
         
